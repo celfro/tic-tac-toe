@@ -10,3 +10,31 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+class Board extends React.Component {
+  conxtructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  renderSquare(i) {
+    return (
+      <Square
+      value={this.state.squares[i]}
+      onClick={() => this.handleClick(i)}
+      />;
+    )
+  }
+}
+
+class Square extends React.Component {
+  render() {
+    return(
+      <button className="square" onClick={function() { alert('click'); }}>
+      {this.props.value}
+      </button>
+    );
+  }
+}
